@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+  <defs>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8BCB32"/>
+      <stop offset="0.45" stop-color="#159447"/>
+      <stop offset="1" stop-color="#07552E"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFD83D"/>
+      <stop offset="1" stop-color="#F2A900"/>
+    </linearGradient>
+    <linearGradient id="orange" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFB21C"/>
+      <stop offset="1" stop-color="#E65313"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-opacity=".18"/>
+    </filter>
+  </defs>
+
+  <!-- outer organic ring -->
+  <path d="M150 390 A350 350 0 0 1 850 390"
+        fill="none" stroke="url(#gold)" stroke-width="34" stroke-linecap="round"/>
+  <path d="M150 390 A350 350 0 0 0 850 390"
+        fill="none" stroke="url(#green)" stroke-width="34" stroke-linecap="round"/>
+
+  <!-- sun -->
+  <circle cx="690" cy="305" r="112" fill="url(#gold)" filter="url(#shadow)"/>
+
+  <!-- farmhouse -->
+  <path d="M390 455 L390 305 L520 205 L650 305 L650 455 Z"
+        fill="#fff" stroke="url(#orange)" stroke-width="28" stroke-linejoin="round"/>
+  <path d="M365 315 L520 185 L675 315" fill="none"
+        stroke="url(#orange)" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="525" y="300" width="45" height="155" rx="5" fill="#E96518"/>
+
+  <!-- left leaf -->
+  <path d="M145 330 C115 510 235 650 405 600 C350 465 270 350 145 330 Z"
+        fill="url(#green)" stroke="#0A6D38" stroke-width="8"/>
+  <path d="M165 350 C240 425 295 495 360 585"
+        fill="none" stroke="#D7F28B" stroke-width="7" stroke-linecap="round"/>
+  <path d="M230 405 C185 430 160 455 145 485
+           M280 470 C230 485 200 515 182 545"
+        fill="none" stroke="#B7E85E" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- center leaf -->
+  <path d="M315 580 C310 430 400 355 500 365 C495 485 430 565 315 580 Z"
+        fill="url(#green)" stroke="#0A6D38" stroke-width="8"/>
+  <path d="M325 560 C375 505 420 445 480 385"
+        fill="none" stroke="#D7F28B" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- cow silhouette -->
+  <g fill="#563313">
+    <path d="M535 535
+      C555 500 595 490 645 500
+      C670 505 695 520 718 535
+      L748 540 L765 565
+      L748 580 L720 572
+      C705 610 680 625 640 622
+      L600 615 L580 635 L568 625 L575 590
+      C550 580 535 562 535 535 Z"/>
+    <ellipse cx="750" cy="552" rx="34" ry="28"/>
+    <path d="M770 535 L790 520 L784 548 L804 540 L792 560 L770 558 Z"/>
+    <path d="M588 605 L580 680 L594 680 L610 610
+             M680 610 L690 680 L704 680 L700 605"
+          />
+    <path d="M532 535 C505 515 490 520 478 532
+             C500 535 512 548 525 557 Z"/>
+  </g>
+
+  <!-- fence -->
+  <g stroke="#5B3A20" stroke-width="10" stroke-linecap="round">
+    <path d="M755 590 L835 590 M765 625 L850 625"/>
+    <path d="M770 565 L770 650 M825 565 L825 650"/>
+  </g>
+
+  <!-- rolling fields -->
+  <path d="M180 690 C330 585 470 625 570 690 C690 770 805 700 900 640
+           L900 820 L120 820 Z" fill="#68B82E"/>
+  <path d="M120 820 C290 690 430 730 565 795 C690 855 790 790 900 730
+           L900 900 L120 900 Z" fill="url(#green)"/>
+  <path d="M125 900 C300 800 455 835 590 890 C715 940 815 885 900 835
+           L900 930 L125 930 Z" fill="#07552E"/>
+
+  <!-- foreground sweeping leaf -->
+  <path d="M145 850 C300 760 520 790 690 850 C790 885 850 865 900 825
+           C835 925 675 955 510 930 C350 905 220 885 145 850 Z"
+        fill="url(#green)" stroke="#0A6D38" stroke-width="8"/>
+  <path d="M190 852 C390 845 555 875 720 890"
+        fill="none" stroke="#BCEB54" stroke-width="9" stroke-linecap="round"/>
+
+  <!-- small birds -->
+  <g fill="none" stroke="#6B4929" stroke-width="7" stroke-linecap="round">
+    <path d="M745 410 q18 -18 36 0 q18 -18 36 0"/>
+    <path d="M790 450 q14 -14 28 0 q14 -14 28 0"/>
+  </g>
+</svg>
