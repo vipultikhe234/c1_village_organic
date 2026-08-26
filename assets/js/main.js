@@ -139,24 +139,97 @@
     });
   }
 
+  const WA_NUMBER = '917040800894';
+
+  /** Prefill WhatsApp chat from the order / inquiry form. */
+  function buildOrderWhatsAppUrl({ intent, name, phone, size, message } = {}) {
+    const isOrder = String(intent || 'order') !== 'inquiry';
+    const n = String(name || '').trim() || '—';
+    const p = String(phone || '').trim() || '—';
+    const product = String(size || '').trim();
+    const m = String(message || '').trim();
+
+    const lines = [
+      'Hi Village Organic 👋',
+      '',
+      isOrder
+        ? 'I would like to *place an order* for bilona ghee.'
+        : 'I have a *general inquiry* about Village Organic / bilona ghee.',
+      '',
+      `*Type:* ${isOrder ? 'Order' : 'Inquiry'}`,
+      `*Name:* ${n}`,
+      `*Phone / WhatsApp:* ${p}`,
+    ];
+
+    if (isOrder && product) {
+      lines.push(`*Product:* ${product}`);
+    }
+
+    if (m) {
+      lines.push('', isOrder ? '*Quantity / city / notes:*' : '*My question:*', m);
+    }
+
+    lines.push(
+      '',
+      isOrder
+        ? 'Please confirm availability and delivery. Thank you!'
+        : 'Please reply when you can. Thank you!',
+    );
+
+    return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`;
+  }
+
   document.querySelectorAll('[data-form]').forEach((form) => {
+    const productField = form.querySelector('[data-product-field]');
+    const sizeSelect = form.querySelector('#size, select[name="size"]');
+    const submitBtn = form.querySelector('[data-form-submit]');
+    const messageBox = form.querySelector('textarea[name="message"]');
+
+    const syncIntent = () => {
+      const intent = form.querySelector('input[name="intent"]:checked')?.value || 'order';
+      const isOrder = intent === 'order';
+      if (productField) {
+        productField.hidden = !isOrder;
+        productField.setAttribute('aria-hidden', isOrder ? 'false' : 'true');
+      }
+      if (sizeSelect) {
+        sizeSelect.required = isOrder;
+        sizeSelect.disabled = !isOrder;
+        if (!isOrder) sizeSelect.removeAttribute('required');
+      }
+      if (submitBtn) {
+        submitBtn.textContent = isOrder ? 'Send order on WhatsApp' : 'Send inquiry on WhatsApp';
+      }
+      if (messageBox) {
+        messageBox.placeholder = isOrder
+          ? 'Quantity, city, delivery notes'
+          : 'Your question (pricing, shipping, bulk, etc.)';
+      }
+    };
+
+    form.querySelectorAll('input[name="intent"]').forEach((radio) => {
+      radio.addEventListener('change', syncIntent);
+    });
+    syncIntent();
+
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const fd = new FormData(form);
-      const text = [
-        'Village Organic order enquiry',
-        `Name: ${fd.get('name') || ''}`,
-        `Phone: ${fd.get('phone') || ''}`,
-        `Product: ${fd.get('size') || ''}`,
-        fd.get('message') || '',
-      ]
-        .filter(Boolean)
-        .join('\n');
-      window.open(`https://wa.me/917040800894?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+      const url = buildOrderWhatsAppUrl({
+        intent: fd.get('intent'),
+        name: fd.get('name'),
+        phone: fd.get('phone'),
+        size: fd.get('size'),
+        message: fd.get('message'),
+      });
+      window.open(url, '_blank', 'noopener,noreferrer');
       const note = form.querySelector('[data-form-note]');
       if (note) {
         note.hidden = false;
-        note.textContent = 'Opening WhatsApp to confirm your order.';
+        const isOrder = String(fd.get('intent') || 'order') !== 'inquiry';
+        note.textContent = isOrder
+          ? 'Opening WhatsApp with your order details…'
+          : 'Opening WhatsApp with your inquiry…';
       }
     });
   });
@@ -164,9 +237,19 @@
   document.querySelectorAll('[data-newsletter]').forEach((form) => {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const email = new FormData(form).get('email') || '';
+      const email = String(new FormData(form).get('email') || '').trim();
+      const text = [
+        'Hi Village Organic 👋',
+        '',
+        'Please keep me updated on bilona ghee offers and new batches.',
+        email ? `*Email:* ${email}` : '',
+        '',
+        'Thank you!',
+      ]
+        .filter(Boolean)
+        .join('\n');
       window.open(
-        `https://wa.me/917040800894?text=${encodeURIComponent(`Village Organic — keep me updated.\nEmail: ${email}`)}`,
+        `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`,
         '_blank',
         'noopener,noreferrer',
       );

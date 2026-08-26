@@ -36,7 +36,7 @@
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": ["Organization", "LocalBusiness"],
+        "@type": ["Organization", "LocalBusiness", "FoodEstablishment"],
         "@id": "https://www.villageorganicstore.com/#org",
         "name": "Village Organic",
         "alternateName": "Sitai Milk Products",
@@ -54,7 +54,15 @@
           "postalCode": "422610",
           "addressCountry": "IN"
         },
-        "areaServed": "IN",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 19.5412,
+          "longitude": 73.8997
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "India"
+        },
         "sameAs": [
           "https://www.instagram.com/village_organic_store/",
           "https://www.villageorganicstore.com/"
@@ -74,6 +82,44 @@
         "name": "Village Organic",
         "publisher": { "@id": "https://www.villageorganicstore.com/#org" },
         "inLanguage": "en-IN"
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.villageorganicstore.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Where is Village Organic based?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Village Organic (Sitai Milk Products) is based at Pimpaldari, Tal-Akole, Pin 422610, Maharashtra, India."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I order bilona ghee?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Call or WhatsApp +91 70408 00894, or use the Order page on villageorganicstore.com to place your request."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What ghee variants do you sell?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Pure Cow Ghee, Desi Cow Ghee and A2 Gir Cow Ghee — made with the traditional bilona method by farmers."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you ship across India?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes — Village Organic serves customers across India. Confirm delivery details when you place your order on WhatsApp or phone."
+            }
+          }
+        ]
       }
     ]
   }
@@ -91,7 +137,7 @@
         <a href="story.html">Our story</a>
         <a href="order.html">Contact</a>
       </nav>
-      <a class="btn btn--gold header-cta" href="products.html">Shop Now</a>
+      <a class="btn btn--gold header-cta" href="order.html">Shop now</a>
       <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" data-menu-btn><span></span></button>
     </div>
   </header>
@@ -101,7 +147,7 @@
     <a href="benefits.html">Why us</a>
     <a href="story.html">Our story</a>
     <a href="order.html">Contact</a>
-    <a class="btn" href="https://wa.me/917040800894" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    <a class="btn" href="order.html">Shop now</a>
   </nav>
 
   <main id="main">
@@ -122,7 +168,7 @@
           <p class="hero__lede">From Our Farm, To Your Family — Farmer Promise.</p>
           <div class="hero__actions">
             <a class="btn btn--gold" href="products.html">View products</a>
-            <a class="btn btn--ghost" href="https://wa.me/917040800894" target="_blank" rel="noopener noreferrer">WhatsApp order</a>
+            <a class="btn btn--ghost" href="order.html">Shop now</a>
           </div>
         </div>
       </div>
@@ -181,7 +227,7 @@
             <h3>Pure Cow Ghee · 1 Litre</h3>
             <p>Manufactured &amp; sold by farmers · Traditional bilona method.</p>
             <p class="price">MRP ₹799</p>
-            <a class="btn btn--gold" href="order.html?size=pure-1L">Order on WhatsApp</a>
+            <a class="btn btn--gold" href="order.html?size=pure-1L">Shop now</a>
           </div>
         </article>
 
@@ -259,6 +305,33 @@
           <article><span>Suitable for Daily Cooking</span></article>
           <article><span>Easy to Digest</span></article>
           <article><span>Premium Quality</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq" aria-labelledby="faq-heading">
+      <div class="wrap">
+        <header class="section__head" data-reveal>
+          <p class="section__kicker">FAQ</p>
+          <h2 id="faq-heading">Common questions</h2>
+        </header>
+        <div class="faq" data-reveal>
+          <details>
+            <summary>Where is Village Organic based?</summary>
+            <p>At Pimpaldari, Tal-Akole, Pin 422610, Maharashtra — manufactured by Sitai Milk Products and marketed as Village Organic.</p>
+          </details>
+          <details>
+            <summary>How do I order bilona ghee?</summary>
+            <p>Call or WhatsApp <a href="tel:+917040800894">+91 70408 00894</a>, or use our <a href="order.html">Order</a> page.</p>
+          </details>
+          <details>
+            <summary>What ghee variants do you sell?</summary>
+            <p>Pure Cow, Desi Cow and A2 Gir Cow ghee — traditional bilona method, farmer-owned, no middlemen.</p>
+          </details>
+          <details>
+            <summary>Do you ship across India?</summary>
+            <p>Yes. Confirm delivery details when you place your order by phone or WhatsApp.</p>
+          </details>
         </div>
       </div>
     </section>

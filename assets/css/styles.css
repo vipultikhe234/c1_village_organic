@@ -679,21 +679,47 @@ body.is-menu-open { overflow: hidden; }
   margin-top: 1.5rem;
 }
 .markets span,
-.markets a {
-  padding: 0.45rem 1rem;
+.markets a,
+.contact-card .markets a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.15rem;
   border-radius: 999px;
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.45);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  transition: background 0.3s var(--ease), border-color 0.3s var(--ease), color 0.3s var(--ease), transform 0.3s var(--ease);
+  border: 1px solid rgba(14, 31, 18, 0.18);
+  background: var(--cream, #f4efe4);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--forest, #0e1f12);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(14, 31, 18, 0.18);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.65) inset;
+  transition: background 0.25s var(--ease, ease), border-color 0.25s, color 0.25s, transform 0.25s, box-shadow 0.25s;
 }
-.markets a:hover {
-  background: rgba(255, 255, 255, 0.85);
-  border-color: rgba(201, 162, 39, 0.55);
-  color: var(--forest);
+.markets a:hover,
+.contact-card .markets a:hover {
+  background: rgba(201, 162, 39, 0.18);
+  border-color: rgba(201, 162, 39, 0.65);
+  color: var(--forest, #0e1f12);
+  padding-left: 1.15rem;
   transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(14, 31, 18, 0.08);
+}
+.contact-card .markets {
+  margin-top: 1.15rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+.contact-card .markets::before {
+  content: 'Also available on';
+  flex: 0 0 100%;
+  margin: 0 0 0.15rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
 /* Featured product spotlight */
@@ -1061,6 +1087,61 @@ body.is-menu-open { overflow: hidden; }
   box-shadow: 0 0 0 4px rgba(201, 162, 39, 0.12);
 }
 .form-note { margin: 0.85rem 0 0; color: var(--leaf); font-size: 0.9rem; }
+
+/* Inquiry vs Order toggle */
+.form-intent {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+.form-intent legend {
+  margin: 0 0 0.45rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.form-intent__opts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.55rem;
+}
+.form-intent__opt {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--cream);
+  cursor: pointer;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink);
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+.form-intent__opt input {
+  width: auto;
+  margin: 0;
+  padding: 0;
+  accent-color: var(--leaf, #2f5d3a);
+}
+.form-intent__opt:has(input:checked) {
+  border-color: rgba(201, 162, 39, 0.65);
+  background: rgba(201, 162, 39, 0.12);
+  box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.1);
+}
+/* Author display:grid on labels overrides native [hidden] — force hide product when inquiry */
+.form-grid [data-product-field][hidden] {
+  display: none !important;
+}
+
 
 .cta-band {
   position: relative;
@@ -1451,4 +1532,29 @@ body.is-menu-open { overflow: hidden; }
   }
   .hero__actions .btn { font-size: 0.84rem; }
 }
+
+/* FAQ */
+.faq {
+  max-width: 40rem;
+  margin: 0 auto;
+}
+.faq details {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.85rem 0;
+}
+.faq summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  list-style: none;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq details[open] summary { color: #c6a36a; }
+.faq p {
+  margin: 0.55rem 0 0.15rem;
+  line-height: 1.55;
+  opacity: 0.88;
+  font-size: 0.95rem;
+}
+
 

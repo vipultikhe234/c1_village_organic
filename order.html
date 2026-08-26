@@ -63,7 +63,7 @@
         <a href="story.html">Our story</a>
         <a href="order.html">Contact</a>
       </nav>
-      <a class="btn btn--gold header-cta" href="https://wa.me/917040800894" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      <a class="btn btn--gold header-cta" href="order.html">Shop now</a>
       <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" data-menu-btn><span></span></button>
     </div>
   </header>
@@ -73,7 +73,7 @@
     <a href="benefits.html">Why us</a>
     <a href="story.html">Our story</a>
     <a href="order.html">Contact</a>
-    <a class="btn" href="https://wa.me/917040800894" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    <a class="btn" href="order.html">Shop now</a>
   </nav>
 
   <main id="main">
@@ -105,13 +105,27 @@
         <div class="form-card" data-reveal>
           <h2>Order enquiry</h2>
           <form class="form-grid" data-form>
+            <fieldset class="full form-intent" aria-label="Enquiry type">
+              <legend>I want to</legend>
+              <div class="form-intent__opts" role="radiogroup">
+                <label class="form-intent__opt">
+                  <input type="radio" name="intent" value="order" checked />
+                  <span>Place an order</span>
+                </label>
+                <label class="form-intent__opt">
+                  <input type="radio" name="intent" value="inquiry" />
+                  <span>General inquiry</span>
+                </label>
+              </div>
+            </fieldset>
             <label>Name
               <input name="name" type="text" autocomplete="name" required placeholder="Your name" />
             </label>
             <label>Phone
               <input name="phone" type="tel" autocomplete="tel" required placeholder="WhatsApp number" />
             </label>
-            <label class="full">Product
+            <label class="full" data-product-field>
+              Product
               <select name="size" id="size" required>
                 <option value="Pure Cow Ghee 200ml — MRP ₹179">Pure Cow Ghee 200 ml — ₹179</option>
                 <option value="Pure Cow Ghee 500ml — MRP ₹399">Pure Cow Ghee 500 ml — ₹399</option>
@@ -124,10 +138,10 @@
               </select>
             </label>
             <label class="full">Message
-              <textarea name="message" rows="4" placeholder="Quantity, city, delivery notes"></textarea>
+              <textarea name="message" rows="4" placeholder="Quantity, city, delivery notes — or your question"></textarea>
             </label>
             <div class="full">
-              <button class="btn" type="submit">Send on WhatsApp</button>
+              <button class="btn" type="submit" data-form-submit>Send on WhatsApp</button>
               <p class="form-note" data-form-note hidden></p>
             </div>
           </form>
